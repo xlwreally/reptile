@@ -1,7 +1,6 @@
 import requests
 import os
 import pandas as pd
-import xlwt
 def ToExcel(list,name):
     Path="C://Users//XLW//Desktop//TEMP//"+name+".xls"
     if (os.path.exists(Path)):

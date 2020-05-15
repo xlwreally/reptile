@@ -1,8 +1,11 @@
 import sys
+
 import bs4
-import Util
-import re
 from bs4 import *
+
+import Util
+
+
 def findPm(ulist,html):
     begin=html.index("PM2.5浓度")
     soup = BeautifulSoup(html, "html.parser")

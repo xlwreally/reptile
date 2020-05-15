@@ -1,9 +1,5 @@
-import sys
-import bs4
 import Util
-import re
 import threading
-import  time
 from progressbar import *
 from bs4 import *
 class findStock(threading.Thread):
@@ -22,6 +18,7 @@ class findStock(threading.Thread):
             pass
     pass
 def findStockList(html,list):
+    print("正在获取全部股票代码")
     soup = BeautifulSoup(Util.getHTMLText(html), "html.parser")
     all=soup.find(id="quotesearch").find_all("ul")
     for li in all[0].find_all("li"):
@@ -42,7 +39,7 @@ def main():
     list=[]
     findStockList(r"http://quote.eastmoney.com/stock_list.html",list)
     thrlist=[]
-    widgets = ['Progress: ', Percentage(), ' ', Bar('#'), ' ', Timer(), ' ', ETA(), ' ', FileTransferSpeed()]
+    widgets = ['正在爬取数据: ', Percentage(), ' ', Bar('#'), ' ', Timer(), ' ', ETA(), ]
     n = list.__len__()
     progress = ProgressBar(widgets=widgets,maxval=n)
     progress.start()
